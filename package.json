@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "http://tinyurl.com URL Shortener Node.js module",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "make test"
   },
@@ -19,6 +16,11 @@
     "url": "https://github.com/jkernech/node-turl/issues"
   },
   "homepage": "https://github.com/jkernech/node-turl/#readme",
+  "keywords": [
+    "tinyurl",
+    "shorturl",
+    "url shortener"
+  ],
   "dependencies": {
   },
   "devDependencies": {
