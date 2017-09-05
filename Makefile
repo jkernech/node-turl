@@ -1,7 +1,7 @@
 .PHONY: test
 
 deps:
-	yarn install
+	npm install
 
 lint:
 	node_modules/.bin/eslint .
