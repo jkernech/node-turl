@@ -16,7 +16,7 @@ describe('turl', () => {
 
 
   it('should return the response when the request is successful', (done) => {
-    const expected = 'http://tinyurl/ok';
+    const expected = 'https://tinyurl/ok';
 
     const response = new PassThrough();
     response.statusCode = 200;
@@ -31,7 +31,7 @@ describe('turl', () => {
       assert(typeof result === 'string');
       assert.equal(result, expected);
       done();
-    }).catch();
+    }).catch(done);
   });
 
   it('should return an error when the status code is invalid', (done) => {
