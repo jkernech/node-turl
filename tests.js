@@ -16,7 +16,7 @@ describe('turl', () => {
 
 
   it('should return the response when the request is successful', (done) => {
-    const expected = 'http://tinyurl/ok';
+    const expected = 'https://tinyurl/ok';
 
     const response = new PassThrough();
     response.statusCode = 200;
@@ -31,7 +31,27 @@ describe('turl', () => {
       assert(typeof result === 'string');
       assert.equal(result, expected);
       done();
-    }).catch();
+    }).catch(done);
+  });
+
+  it('should return an HTTPS short URL', (done) => {
+    const rawResult = 'http://tinyurl/ok';
+    const expected = 'https://tinyurl/ok';
+
+    const response = new PassThrough();
+    response.statusCode = 200;
+    response.write(rawResult);
+    response.end();
+
+    const request = new PassThrough();
+    this.request.callsArgWith(1, response).returns(request);
+
+    turl.shorten('www.google.com').then((result) => {
+      assert(result);
+      assert(typeof result === 'string');
+      assert.equal(result, expected);
+      done();
+    }).catch(done);
   });
 
   it('should return an error when the status code is invalid', (done) => {
