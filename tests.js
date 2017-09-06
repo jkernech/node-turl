@@ -34,6 +34,26 @@ describe('turl', () => {
     }).catch(done);
   });
 
+  it('should return an HTTPS short URL', (done) => {
+    const rawResult = 'http://tinyurl/ok';
+    const expected = 'https://tinyurl/ok';
+
+    const response = new PassThrough();
+    response.statusCode = 200;
+    response.write(rawResult);
+    response.end();
+
+    const request = new PassThrough();
+    this.request.callsArgWith(1, response).returns(request);
+
+    turl.shorten('www.google.com').then((result) => {
+      assert(result);
+      assert(typeof result === 'string');
+      assert.equal(result, expected);
+      done();
+    }).catch(done);
+  });
+
   it('should return an error when the status code is invalid', (done) => {
     const response = new PassThrough();
     response.statusCode = 400;

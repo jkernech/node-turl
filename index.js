@@ -11,7 +11,9 @@ module.exports = {
         }
 
         response.on('data', (data) => {
-          resolve(data.toString());
+          // TinyUrl API support HTTPS short link generation but not their API
+          // so we need to replace the protocol.. :(
+          resolve(data.toString().replace('http://', 'https://'));
         });
       }).on('error', (error) => {
         reject(error);
