@@ -9,7 +9,7 @@ const turl = require('turl');
 
 turl.shorten('http://google.com').then((res) => {
   console.log(res);
-}).catch((err) {
+}).catch((err) => {
   console.log(err);
 });
 ```
