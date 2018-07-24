@@ -35,3 +35,10 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Ignore package-lock.json for libs
+# cf. https://github.com/sindresorhus/ama/issues/479
+package-lock.json
+
+# Ignore SonarQube cache folder
+.sonar
